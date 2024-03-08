@@ -105,7 +105,7 @@ local function dropoffVehicle()
         Wait(2000)
         local success = lib.callback.await('randol_carheist:server:finishHeist', false, NetworkGetNetworkIdFromEntity(vehicle))
         if success then 
-            copsCalled, droppingOff = false
+            droppingOff = false
             lib.hideTextUI()
             zoneDrop:remove()
             HEIST_CAR, dropoff, zoneDrop, spawnBlip, blip2, coords, vehicle = nil
@@ -152,7 +152,7 @@ RegisterNetEvent('randol_carheist:client:resetHeist', function()
         robberyactive = false
     end
 
-    copsCalled, trackerActive = false
+    trackerActive = false
     HEIST_CAR, spawnBlip, blip2 = nil
     table.wipe(myData)
     exports['qb-target']:RemoveZone('garage_enter')
@@ -189,7 +189,7 @@ end)
 RegisterNetEvent('randol_carheist:client:endRobbery', function()
     if GetInvokingResource() then return end
 
-    robberyactive, copsCalled, trackerActive = false
+    robberyactive, trackerActive = false
     if policeBlip then RemoveBlip(policeBlip) policeBlip = nil end
     HEIST_CAR, spawnBlip, blip2 = nil
 
