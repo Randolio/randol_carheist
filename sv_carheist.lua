@@ -116,6 +116,10 @@ lib.callback.register('randol_carheist:server:createVehicle', function(source)
     updateTracker(source, entity)
     carHeist[source].entity = entity
 
+    if AlertPolice then
+        AlertPolice(source, entity)
+    end
+
     return NetworkGetNetworkIdFromEntity(entity)
 end)
 

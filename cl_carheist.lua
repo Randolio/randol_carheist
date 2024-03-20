@@ -216,7 +216,10 @@ local function initVehicle(netid)
         Entity(HEIST_CAR).state.fuel = 100
     end
 
-    AlertPolice(HEIST_CAR)
+    if AlertPolice then
+        AlertPolice(HEIST_CAR)
+    end
+    
     robberyactive = true
     trackerActive = true
     DoNotification('You found the correct vehicle. Outdrive the tracker!', 'success')
