@@ -8,7 +8,7 @@ local NDCore = exports["ND_Core"]
 
 function GetPlayer(id)
     local player = NDCore:getPlayer(id)
-    return player?.source
+    return player
 end
 
 function DoNotification(src, text, nType)
