@@ -22,13 +22,23 @@ function GetPlyIdentifier(player)
 end
 
 function GetByIdentifier(cid)
-    local players = NDCore:getPlayers("id", cid, true)
-    return players[1]
+    local players = NDCore:getPlayers()
+    for _, info in pairs(players) do
+        if info.id == cid then
+            return info
+        end
+    end
+    return false
 end
 
 function GetSourceFromIdentifier(cid)
-    local players = NDCore:getPlayers("id", cid, true)
-    return players[1]?.source or false
+    local players = NDCore:getPlayers() -- old method kept returning false, fuck knows.
+    for _, info in pairs(players) do
+        if info.id == cid then
+            return info.source
+        end
+    end
+    return false
 end
 
 function GetCharacterName(player)
