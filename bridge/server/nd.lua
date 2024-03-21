@@ -8,7 +8,7 @@ local NDCore = exports["ND_Core"]
 
 function GetPlayer(id)
     local player = NDCore:getPlayer(id)
-    return player?.id
+    return player?.source
 end
 
 function DoNotification(src, text, nType)
@@ -18,16 +18,16 @@ function DoNotification(src, text, nType)
 end
 
 function GetPlyIdentifier(player)
-    return player?.identifier
+    return player?.id
 end
 
 function GetByIdentifier(cid)
-    local players = NDCore:getPlayers("identifier", cid, true)
+    local players = NDCore:getPlayers("id", cid, true)
     return players[1]
 end
 
 function GetSourceFromIdentifier(cid)
-    local players = NDCore:getPlayers("identifier", cid, true)
+    local players = NDCore:getPlayers("id", cid, true)
     return players[1]?.source or false
 end
 
