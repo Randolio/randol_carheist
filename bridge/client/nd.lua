@@ -3,11 +3,11 @@ if GetResourceState("ND_Core") ~= "started" then return end
 local NDCore = exports["ND_Core"]
 local playerLoaded = false
 
-AddEventHandler("ND:characterLoaded", function()
+RegisterNetEvent("ND:characterLoaded", function()
     playerLoaded = true
 end)
 
-AddEventHandler("ND:characterUnloaded", function()
+RegisterNetEvent("ND:characterUnloaded", function()
     playerLoaded = false
     OnPlayerLogout()
 end)
