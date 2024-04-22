@@ -13,7 +13,7 @@ end
 local function spawnPed()
     if DoesEntityExist(START_PED) then return end
     
-    lib.requestModel(Config.PedModel, 5000)
+    lib.requestModel(Config.PedModel)
     START_PED = CreatePed(0, Config.PedModel, Config.PedCoords, false, false)
     SetEntityAsMissionEntity(START_PED)
     SetPedFleeAttributes(START_PED, 0, 0)
@@ -21,6 +21,7 @@ local function spawnPed()
     SetEntityInvincible(START_PED, true)
     FreezeEntityPosition(START_PED, true)
     TaskStartScenarioInPlace(START_PED, 'WORLD_HUMAN_SMOKING_POT', 0, true)
+    SetModelAsNoLongerNeeded(Config.PedModel)
 
     exports['qb-target']:AddTargetEntity(START_PED, {
         options = {
@@ -254,8 +255,9 @@ function stealPoint()
                 Wait(100)
                 local offset = GetOffsetFromEntityInWorldCoords(cache.ped, 0.0, -1.1, -0.95)
                 SetEntityCoords(cache.ped, offset)
-                lib.requestAnimDict('anim@apt_trans@garage', 2000)
+                lib.requestAnimDict('anim@apt_trans@garage')
                 TaskPlayAnim(cache.ped, 'anim@apt_trans@garage', 'gar_open_1_left', 8.0, -8.0, -1, 02, 0, 0, 0, 0)
+                RemoveAnimDict('anim@apt_trans@garage')
                 Wait(2000)
                 DoScreenFadeOut(500)
                 local soundId = GetSoundId()
