@@ -33,6 +33,7 @@ end
 
 function GetItemData(xPlayer, item)
     local data = exports.ox_inventory:GetSlotWithItem(xPlayer.source, item)
+    if not data then return false end
     return data, data.metadata
 end
 

@@ -47,6 +47,7 @@ end
 
 function GetItemData(player, item)
     local data = exports.ox_inventory:GetSlotWithItem(player.source, item)
+    if not data then return false end
     return data, data.metadata
 end
 

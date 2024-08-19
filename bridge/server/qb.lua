@@ -25,13 +25,12 @@ function GetCharacterName(Player)
 end
 
 function GetItemData(Player, item)
-    if ox_inv then 
-        local data = exports.ox_inventory:GetSlotWithItem(Player.PlayerData.source, item)
-        return data, data.metadata
-    else
-        local data = Player.Functions.GetItemByName(item)
-        return data, data.info
-    end
+    local data = ox_inv and exports.ox_inventory:GetSlotWithItem(Player.PlayerData.source, item) or Player.Functions.GetItemByName(item)
+
+    if not data then return false end
+
+    local metadata = ox_inv and data.metadata or data.info
+    return data, metadata
 end
 
 function RemoveHeistPapers(Player, item, slot)

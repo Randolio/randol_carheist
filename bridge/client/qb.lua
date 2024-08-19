@@ -24,5 +24,5 @@ function DoNotification(text, nType)
 end
 
 function AlertPolice(vehicle)
-    exports['ps-dispatch']:VehicleTheft(vehicle)
+    --exports['ps-dispatch']:VehicleTheft(vehicle)
 end
